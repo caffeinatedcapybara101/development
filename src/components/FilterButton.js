@@ -1,9 +1,12 @@
 import "./FilterSort.css"
 
 const FilterButton = ({ className, id, onClick, select }) => {
-    let check = true
-    if (select.indexOf(id) < 0) {
-        check = false
+    let check = false
+    for (let filter of select) {
+        if (filter == id) {
+            check = true
+            break
+        }
     }
 
     return (

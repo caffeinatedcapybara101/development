@@ -174,8 +174,6 @@ function App() {
   }
 
   // ************************* handles reset  *************************//
-  const [resetBool, setResetBool] = useState(false)
-
   const reset = () => {
     resetSquishmallowData()
     setCategoryFilters([])
@@ -211,10 +209,10 @@ function App() {
           {/* size filters */}
           <div className="filter">
             <h3>Size</h3>
-            <FilterButton className="category" id="5" onClick={selectSizeFilters} select={categoryFilters} />
-            <FilterButton className="category" id="12" onClick={selectSizeFilters} select={categoryFilters} />
-            <FilterButton className="category" id="16" onClick={selectSizeFilters} select={categoryFilters} />
-            <FilterButton className="category" id="20" onClick={selectSizeFilters} select={categoryFilters} />
+            <FilterButton className="category" id="5" onClick={selectSizeFilters} select={sizeFilters} />
+            <FilterButton className="category" id="12" onClick={selectSizeFilters} select={sizeFilters} />
+            <FilterButton className="category" id="16" onClick={selectSizeFilters} select={sizeFilters} />
+            <FilterButton className="category" id="20" onClick={selectSizeFilters} select={sizeFilters} />
           </div>
 
           <button id="reset-button" onClick={reset}>Reset</button>
