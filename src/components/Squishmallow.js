@@ -1,4 +1,5 @@
 import "./Squishmallow.css"
+import { TfiShoppingCart } from "react-icons/tfi";
 
 // component for a squishmallow
 function Squishmallow(props) {
@@ -32,7 +33,10 @@ function Squishmallow(props) {
                         Price:
                         <span className="info-description">{" $" + squishmallow.price}</span>
                     </p>
-                    <button onClick={() => props.addCart(squishmallow.name, squishmallow.currSize, squishmallow.price)}>Add to Cart</button>
+                    <button className="add-button" onClick={() => props.addCart(squishmallow.name, squishmallow.currSize, squishmallow.price)}>
+                        <TfiShoppingCart size={25} />
+                        <span className="add-text">Add to Cart</span>
+                    </button>
                 </div>
             </div>
         </div >

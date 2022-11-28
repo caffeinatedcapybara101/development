@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./SideNav.css"
 import CartItem from "./CartItem"
-import { TfiShoppingCartFull } from "react-icons/tfi";
+import { TfiShoppingCart } from "react-icons/tfi";
 import { IoIosClose } from "react-icons/io"
 
 function SideNav(props) {
@@ -19,7 +19,7 @@ function SideNav(props) {
 
     return (
         <>
-            <TfiShoppingCartFull borderWidth={1} size={40} id="cart-button" onClick={handleShow} />
+            <TfiShoppingCart borderWidth={1} size={40} id="cart-button" onClick={handleShow} />
             <div className={(show) ? "sidebar-open" : "sidebar-close"}>
                 <div id="sidebar-header">
                     <h3>Cart</h3>

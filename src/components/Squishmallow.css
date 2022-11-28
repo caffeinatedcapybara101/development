@@ -78,5 +78,27 @@
     cursor: pointer;
     border: 2px solid #7d9b97;
     background-color: #7d9b97;
+}
 
+.add-button {
+    font-family: 'Kanit', sans-serif;
+    margin-top: 10px;
+    display: flex;
+    color: #2F4B48;
+    padding: 3px;
+    background-color: #9BC1BC;
+    border: 2px solid #2F4B48;
+    border-radius: 7px;
+    transition: 0.5s;
+}
+
+.add-button:hover {
+    cursor: pointer;
+    border: 2px solid #7d9b97;
+    background-color: #7d9b97;
+}
+
+.add-text {
+    margin: auto 0 auto 3px;
+    color: #182624;
 }

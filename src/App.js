@@ -30,6 +30,16 @@ function App() {
     setSquishmallows(updated)
   }
 
+  const resetSquishmallowData = () => {
+    let updated = []
+    for (let squish of squishmallows) {
+      squish.price = prices[5]
+      squish.currSize = 5
+      updated = [...updated, squish]
+    }
+    setSquishmallows(updated)
+  }
+
   // ********************** filtering functions **********************//
   const [categoryFilters, setCategoryFilters] = useState([])
   const [sizeFilters, setSizeFilters] = useState([])
@@ -163,6 +173,17 @@ function App() {
     setCartItems(updated)
   }
 
+  // ************************* handles reset  *************************//
+  const [resetBool, setResetBool] = useState(false)
+
+  const reset = () => {
+    resetSquishmallowData()
+    setCategoryFilters([])
+    setSizeFilters([])
+    setSortBy("Name")
+    setCartItems([])
+  }
+
   return (
     <div className="App">
       <header>
@@ -175,27 +196,28 @@ function App() {
           {/* sorting */}
           <div className="sort">
             <h3>Sort By</h3>
-            <SortButton id="Name" checked={sortBy} onClick={selectSortBy} />
-            <SortButton id="Year" checked={sortBy} onClick={selectSortBy} />
+            <SortButton id="Name" sortProp={sortBy} onClick={selectSortBy} />
+            <SortButton id="Year" sortProp={sortBy} onClick={selectSortBy} />
           </div>
 
           {/* category filters */}
           <div className="filter">
             <h3>Category</h3>
-            <FilterButton className="category" id="Fruit" onClick={selectCategoryFilters} />
-            <FilterButton className="category" id="Jungle" onClick={selectCategoryFilters} />
-            <FilterButton className="category" id="Fantasy" onClick={selectCategoryFilters} />
+            <FilterButton className="category" id="Fruit" onClick={selectCategoryFilters} select={categoryFilters} />
+            <FilterButton className="category" id="Jungle" onClick={selectCategoryFilters} select={categoryFilters} />
+            <FilterButton className="category" id="Fantasy" onClick={selectCategoryFilters} select={categoryFilters} />
           </div>
 
           {/* size filters */}
           <div className="filter">
             <h3>Size</h3>
-            <FilterButton className="category" id="5" onClick={selectSizeFilters} />
-            <FilterButton className="category" id="10" onClick={selectSizeFilters} />
-            <FilterButton className="category" id="12" onClick={selectSizeFilters} />
-            <FilterButton className="category" id="16" onClick={selectSizeFilters} />
-            <FilterButton className="category" id="20" onClick={selectSizeFilters} />
+            <FilterButton className="category" id="5" onClick={selectSizeFilters} select={categoryFilters} />
+            <FilterButton className="category" id="12" onClick={selectSizeFilters} select={categoryFilters} />
+            <FilterButton className="category" id="16" onClick={selectSizeFilters} select={categoryFilters} />
+            <FilterButton className="category" id="20" onClick={selectSizeFilters} select={categoryFilters} />
           </div>
+
+          <button onClick={reset}>Reset</button>
         </div>
 
         <div id="squishmallow-display">
