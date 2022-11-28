@@ -1,24 +1,38 @@
 import './App.css';
 import { useState } from "react";
 
-import createSquishmallow from "./components/Squishmallow"
+import Squishmallow from "./components/Squishmallow"
 import FilterButton from './components/FilterButton';
 import SortButton from './components/SortButton';
+import SideNav from './components/SideNav';
 
 function App() {
-  const squishmallows = require("./squishmallowData.json")
+  const squishmallowData = require("./squishmallowData.json")
+  const prices = {
+    5: 20.95,
+    12: 30.62,
+    16: 35.55,
+    20: 42.69
+  }
 
-  // *************************** favorites ***************************//
-  const [favoritesList, setFavoritesList] = useState([])
+  // ************** changes in squishmallow data (price) **************//
+  const [squishmallows, setSquishmallows] = useState(squishmallowData)
 
-  const addToFavorites = (squishmallow) => {
-    setFavoritesList([...favoritesList, squishmallow])
+  const changeSquishmallowData = (name, size) => {
+    let updated = []
+    for (let squish of squishmallows) {
+      if (squish.name == name) {
+        squish.price = prices[size]
+        squish.currSize = size
+      }
+      updated = [...updated, squish]
+    }
+    setSquishmallows(updated)
   }
 
   // ********************** filtering functions **********************//
   const [categoryFilters, setCategoryFilters] = useState([])
   const [sizeFilters, setSizeFilters] = useState([])
-  const [favoritesFilter, setFavoritesFilter] = useState(false)
 
   // Category Filters
   const selectCategoryFilters = e => {
@@ -73,23 +87,7 @@ function App() {
     }
   }
 
-  // Favorites Filters
-  const selectFavoritesFilters = e => {
-    if (e.target.checked) {
-      setFavoritesFilter(true)
-    } else {
-      setFavoritesFilter(false)
-    }
-  }
-
-  let squishmallowList = []
-  console.log(favoritesList)
-  if (favoritesFilter) {
-    squishmallowList = favoritesList
-  } else {
-    squishmallowList = squishmallows
-  }
-  squishmallowList = squishmallowList.filter(matchesCategoryFilter)
+  let squishmallowList = squishmallows.filter(matchesCategoryFilter)
   squishmallowList = squishmallowList.filter(matchesSizeFilter)
 
   // *********************** sorting functions ***********************//
@@ -117,8 +115,60 @@ function App() {
 
   squishmallowList = squishmallowList.sort(sortFunc)
 
+  // ************************ cart functions ************************//
+  const [cartItems, setCartItems] = useState([])
+
+  const addToCart = (name, size, price) => {
+    let updated = []
+    const newItem = name + ", " + size
+    let found = false
+    for (let cartItem of cartItems) {
+      if (cartItem.item == newItem) {
+        found = true
+        cartItem.price = cartItem.price + price
+        cartItem.number = cartItem.number + 1
+      }
+      updated = [...updated, cartItem]
+    }
+
+    if (found !== true) {
+      const newCartItem = {
+        "item": newItem,
+        "price": price,
+        "number": 1,
+        "basePrice": price
+      }
+      updated = [...updated, newCartItem]
+    }
+    setCartItems(updated)
+  }
+
+  const adjustCart = (item, basePrice, adjust, numRemoved) => {
+    let updated = []
+    for (let cartItem of cartItems) {
+      if (cartItem.item == item) {
+        if (adjust == "-") {
+          cartItem.price = cartItem.price - basePrice
+          cartItem.number = cartItem.number - numRemoved
+        } else {
+          cartItem.price = cartItem.price + basePrice
+          cartItem.number = cartItem.number + numRemoved
+        }
+      }
+
+      if (cartItem.number !== 0) {
+        updated = [...updated, cartItem]
+      }
+    }
+    setCartItems(updated)
+  }
+
   return (
     <div className="App">
+      <header>
+        <h1>Squishmallows</h1>
+        <SideNav placement="end" name="end" items={cartItems} adjust={adjustCart} />
+      </header>
       <div className="main-grid">
         {/* side filter/sort */}
         <div id="filter-sort-container">
@@ -127,7 +177,6 @@ function App() {
             <h3>Sort By</h3>
             <SortButton id="Name" checked={sortBy} onClick={selectSortBy} />
             <SortButton id="Year" checked={sortBy} onClick={selectSortBy} />
-            <SortButton id="Collector Num" checked={sortBy} onClick={selectSortBy} />
           </div>
 
           {/* category filters */}
@@ -141,25 +190,18 @@ function App() {
           {/* size filters */}
           <div className="filter">
             <h3>Size</h3>
-            <FilterButton className="category" id="3" onClick={selectSizeFilters} />
             <FilterButton className="category" id="5" onClick={selectSizeFilters} />
             <FilterButton className="category" id="10" onClick={selectSizeFilters} />
             <FilterButton className="category" id="12" onClick={selectSizeFilters} />
             <FilterButton className="category" id="16" onClick={selectSizeFilters} />
             <FilterButton className="category" id="20" onClick={selectSizeFilters} />
           </div>
-
-          {/* other filters */}
-          <div className="filter">
-            <h3>Other</h3>
-            <FilterButton className="other" id="Favorites" onClick={selectFavoritesFilters} />
-          </div>
         </div>
 
         <div id="squishmallow-display">
           {squishmallowList.map((item) => (
             <div key={item.name}>
-              {createSquishmallow(item, addToFavorites)}
+              <Squishmallow item={item} change={changeSquishmallowData} addCart={addToCart} />
             </div>
           ))}
         </div>

@@ -1,3 +1,5 @@
+import "./FilterSort.css"
+
 const FilterButton = ({ className, id, onClick }) => {
     return (
         <div>

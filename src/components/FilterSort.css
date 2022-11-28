@@ -1,0 +1,31 @@
+input[type=radio],
+input[type=checkbox] {
+    accent-color: #2F4B48;
+    transition: 0.5s;
+    vertical-align: middle;
+    margin-top: -3px;
+    margin-bottom: 2px;
+    margin-left: 10px;
+}
+
+input[type=radio] {
+    width: 20px;
+    height: 20px;
+}
+
+input[type=checkbox] {
+    width: 17px;
+    height: 17px;
+}
+
+input[type=radio]:hover,
+input[type=checkbox]:hover {
+    cursor: pointer;
+}
+
+label {
+    color: #182624;
+    display: inline-block;
+    font-size: 17px;
+    margin-left: 5px;
+}

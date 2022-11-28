@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
 .squishmallow {
     border: 5px solid #2F4B48;
@@ -26,6 +27,7 @@
     position: relative;
     display: flex;
     top: -50px;
+    color: #182624;
 }
 
 .image {
@@ -48,4 +50,33 @@
 .info-description {
     margin: 0px;
     font-weight: normal;
+}
+
+.selected-size,
+.unselected-size {
+    font-family: 'Kanit', sans-serif;
+    border-radius: 100%;
+    margin: 3px;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+}
+
+.selected-size {
+    border: 2px solid #2F4B48;
+    background-color: #2F4B48;
+    color: #9BC1BC;
+}
+
+.unselected-size {
+    background-color: #9BC1BC;
+    border: 2px solid #2F4B48;
+    transition: 0.5s;
+}
+
+.unselected-size:hover {
+    cursor: pointer;
+    border: 2px solid #7d9b97;
+    background-color: #7d9b97;
+
 }
