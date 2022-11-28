@@ -1,0 +1,49 @@
+.single-item {
+    display: flex;
+}
+
+.single-item div {
+    width: 20%;
+}
+
+.item-name {
+    text-align: left;
+}
+
+.item-size {
+    text-align: center;
+}
+
+.item-quantity {
+    text-align: center;
+}
+
+.item-adjust {
+    width: 21.5px;
+    margin: 0px 5px 0px 5px;
+    background-color: #9BC1BC;
+    border: 2px solid #2F4B48;
+    border-radius: 50%;
+}
+
+.item-adjust:hover {
+    cursor: pointer;
+    border: 2px solid #7d9b97;
+}
+
+.item-price {
+    text-align: center;
+}
+
+.item-delete {
+    text-align: center;
+}
+
+.trash-button {
+    color: #2F4B48;
+}
+
+.trash-button:hover {
+    cursor: pointer;
+    color: #7d9b97;
+}

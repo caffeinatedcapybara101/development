@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import "./SideNav.css"
 import CartItem from "./CartItem"
+import { TfiShoppingCartFull } from "react-icons/tfi";
+import { IoIosClose } from "react-icons/io"
 
 function SideNav(props) {
     const items = props.items
@@ -17,26 +19,27 @@ function SideNav(props) {
 
     return (
         <>
-            <button id="open-button" onClick={handleShow} className="me-2">
-                Open
-            </button>
+            <TfiShoppingCartFull borderWidth={1} size={40} id="cart-button" onClick={handleShow} />
             <div className={(show) ? "sidebar-open" : "sidebar-close"}>
                 <div id="sidebar-header">
                     <h3>Cart</h3>
-                    <button onClick={handleClose}>Close</button>
+
+                    <IoIosClose size={50} id="nav-close-button" onClick={handleClose} />
                 </div>
                 <div>
-                    <div className="cart-item">
+                    <div id="item-headers">
                         <div>Item Name</div>
                         <div>Size</div>
                         <div>Quantity</div>
                         <div>Price</div>
                         <div>Remove</div>
                     </div>
-                    {items.map(item => (
-                        <CartItem item={item} adjust={props.adjust} />
-                    ))}
-                    <div>Total: {total.toFixed(2)}</div>
+                    <div id="cart-items">
+                        {items.map(item => (
+                            <CartItem item={item} adjust={props.adjust} />
+                        ))}
+                    </div>
+                    <div id="total">Total: ${total.toFixed(2)}</div>
                 </div>
             </div>
         </>
