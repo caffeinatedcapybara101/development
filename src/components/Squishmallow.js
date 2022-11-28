@@ -9,7 +9,7 @@ function Squishmallow(props) {
         <div className="squishmallow">
             <h3 className="name">{squishmallow.name}</h3>
             <div className="card">
-                <img src={process.env.PUBLIC_URL + squishmallow.image} className="image" />
+                <img src={squishmallow.image} className="image" />
                 <div className="info">
                     <p className="info-heading">
                         Category:
