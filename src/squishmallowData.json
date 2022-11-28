@@ -91,5 +91,94 @@
         "image": "./images/jungle/mila.png",
         "price": 20.95,
         "currSize": 5
+    },
+    {
+        "name": "Freddie",
+        "category": "Jungle",
+        "size": [
+            5,
+            12,
+            16
+        ],
+        "year": 2019,
+        "image": "./images/jungle/freddie.png",
+        "price": 20.95,
+        "currSize": 5
+    },
+    {
+        "name": "Mark",
+        "category": "Jungle",
+        "size": [
+            5,
+            16
+        ],
+        "year": 2019,
+        "image": "./images/jungle/mark.png",
+        "price": 20.95,
+        "currSize": 5
+    },
+    {
+        "name": "Tina",
+        "category": "Jungle",
+        "size": [
+            5,
+            12,
+            16,
+            20
+        ],
+        "year": 2019,
+        "image": "./images/jungle/tina.png",
+        "price": 20.95,
+        "currSize": 5
+    },
+    {
+        "name": "Doxl",
+        "category": "Fantasy",
+        "size": [
+            5,
+            20
+        ],
+        "year": 2022,
+        "image": "./images/fantasy/doxl.png",
+        "price": 20.95,
+        "currSize": 5
+    },
+    {
+        "name": "Esmeralda",
+        "category": "Fantasy",
+        "size": [
+            5,
+            12,
+            20
+        ],
+        "year": 2021,
+        "image": "./images/fantasy/esmeralda.png",
+        "price": 20.95,
+        "currSize": 5
+    },
+    {
+        "name": "Avrill",
+        "category": "Fantasy",
+        "size": [
+            5,
+            20
+        ],
+        "year": 2022,
+        "image": "./images/fantasy/avrill.png",
+        "price": 20.95,
+        "currSize": 5
+    },
+    {
+        "name": "Ben",
+        "category": "Fantasy",
+        "size": [
+            5,
+            12,
+            20
+        ],
+        "year": 2020,
+        "image": "./images/fantasy/ben.png",
+        "price": 20.95,
+        "currSize": 5
     }
 ]

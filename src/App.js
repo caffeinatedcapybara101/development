@@ -217,7 +217,7 @@ function App() {
             <FilterButton className="category" id="20" onClick={selectSizeFilters} select={categoryFilters} />
           </div>
 
-          <button onClick={reset}>Reset</button>
+          <button id="reset-button" onClick={reset}>Reset</button>
         </div>
 
         <div id="squishmallow-display">

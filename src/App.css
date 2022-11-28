@@ -51,3 +51,19 @@ h3 {
   font-size: 22px;
   margin: 10px;
 }
+
+#reset-button {
+  font-family: 'Kanit', sans-serif;
+  font-size: 17px;
+  margin-top: 10px;
+  background-color: #9BC1BC;
+  border: 2px solid #2F4B48;
+  border-radius: 7px;
+  transition: 0.5s;
+}
+
+#reset-button:hover {
+  cursor: pointer;
+  border: 2px solid #7d9b97;
+  background-color: #7d9b97;
+}
