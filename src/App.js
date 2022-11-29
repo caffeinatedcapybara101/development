@@ -4,7 +4,7 @@ import { useState } from "react";
 import Squishmallow from "./components/Squishmallow"
 import FilterButton from './components/FilterButton';
 import SortButton from './components/SortButton';
-import SideNav from './components/SideNav';
+import Cart from './components/Cart';
 
 function App() {
   const squishmallowData = require("./squishmallowData.json")
@@ -186,7 +186,7 @@ function App() {
     <div className="App">
       <header>
         <h1>Squishmallows</h1>
-        <SideNav placement="end" name="end" items={cartItems} adjust={adjustCart} />
+        <Cart placement="end" name="end" items={cartItems} adjust={adjustCart} />
       </header>
       <div className="main-grid">
         {/* side filter/sort */}
